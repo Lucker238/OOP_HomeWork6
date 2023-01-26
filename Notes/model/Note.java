@@ -19,6 +19,12 @@ public class Note {
         this.date = date;
     }
 
+    public Note(String name, String text, String date) {
+        this.name = name;
+        this.text = text;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }
