@@ -7,5 +7,6 @@ public enum Commands {
     DELETE,
     READ,
     CLOSE,
-    EXIT
+    EXIT,
+    NONE
 }

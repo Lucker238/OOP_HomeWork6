@@ -4,9 +4,9 @@ public class NoteMapper {
     public String map(Note note) 
     {
         if(note.getDate().isBlank()) {
-            return String.format("%d, %s, %s, %s", note.getId(), note.getName(), note.getText());
+            return String.format("%d,%s,%s,%s", note.getId(), note.getName(), note.getText());
         }
-        return String.format("%d, %s, %s, %s", note.getId(), note.getName(), note.getText(), note.getDate());
+        return String.format("%d,%s,%s,%s", note.getId(), note.getName(), note.getText(), note.getDate());
     }
 
     public Note map(String str) 

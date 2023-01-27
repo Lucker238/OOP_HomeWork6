@@ -57,4 +57,9 @@ public class Note {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return String.format("ID: %d\nНазвание: %s\nТекст: %s\nДата: %s", id, name, text, date);
+    }
+
 }

@@ -1,4 +1,4 @@
-package OOP_Lesson6_Solid.HomeWork;
+package HomeWork;
 
 public class Main{
 	public static void main(String[] args){

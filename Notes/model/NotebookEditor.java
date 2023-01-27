@@ -7,6 +7,11 @@ public class NotebookEditor implements NotebookEdit{
     private NoteMapper mapper = new NoteMapper();
     private NotebookFile notebookFile;
 
+    
+    public NotebookEditor(NotebookFile notebookFile) {
+        this.notebookFile = notebookFile;
+    }
+
     @Override
     public List<Note> getAllNotes() {
         List<String> lines = notebookFile.readAllLines();
@@ -18,7 +23,7 @@ public class NotebookEditor implements NotebookEdit{
     }
 
     @Override
-    public String createNote(Note note) {
+    public int createNote(Note note) {
         List<Note> notes = getAllNotes();
         int maxID = 0;
         for (Note note2 : notes) {
@@ -28,22 +33,28 @@ public class NotebookEditor implements NotebookEdit{
             }
         }
         int newID = maxID + 1;
-        String id = Integer.toString(newID);
         note.setId(newID);
         notes.add(note);
         writeDown(notes);
-        return null;
+        return newID;
     }
 
     @Override
     public void updateNote(Note note) {
-        // List<Note> notes = getAllNotes();
+        List<Note> notes = getAllNotes();
+        Note noteForEdid = notes.stream().filter(i -> i.getId() == note.getId()).findFirst().get();
+        noteForEdid.setName(note.getName());
+        noteForEdid.setText(note.getText());
+        noteForEdid.setDate(note.getDate());
+        writeDown(notes);
     }
 
     @Override
     public void deleteNote(Note note) {
-        // TODO Auto-generated method stub
-        
+        List<Note> notes = getAllNotes();
+        Note noteForDelete = notes.stream().filter(i -> i.getId() == note.getId()).findFirst().get();
+        notes.remove(noteForDelete);
+        edditList(notes);
     }
 
     private void writeDown(List<Note> notes) {
@@ -52,6 +63,15 @@ public class NotebookEditor implements NotebookEdit{
             lines.add(mapper.map(note));
         }
         notebookFile.saveAllLines(lines);
+    }
+
+    private void edditList(List<Note> notes) {
+        int id = 1;
+        for (Note note : notes) {
+            note.setId(id);
+            id += 1;
+        }
+        writeDown(notes);
     }
     
 }
