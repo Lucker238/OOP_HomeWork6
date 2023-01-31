@@ -1,6 +1,8 @@
 package Notes.model;
 
-public class NoteMapper {
+public class NoteMapper implements Mapper{
+    
+    @Override
     public String map(Note note) 
     {
         if(note.getDate().isBlank()) {
@@ -9,6 +11,7 @@ public class NoteMapper {
         return String.format("%d,%s,%s,%s", note.getId(), note.getName(), note.getText(), note.getDate());
     }
 
+    @Override
     public Note map(String str) 
     {
         String[] strgs = str.split(",");

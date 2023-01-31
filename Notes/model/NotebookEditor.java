@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotebookEditor implements NotebookEdit{
-    private NoteMapper mapper = new NoteMapper();
+    private Mapper mapper = new NoteMapper();
     private NotebookFile notebookFile;
 
-    
+
     public NotebookEditor(NotebookFile notebookFile) {
         this.notebookFile = notebookFile;
     }
+
 
     @Override
     public List<Note> getAllNotes() {

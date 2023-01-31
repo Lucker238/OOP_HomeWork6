@@ -45,7 +45,7 @@ public class Viev {
                         }
                         break;
                     case UPDATE:
-                        int updateID = Integer.parseInt(prompt("Введите ID для обовления: "));
+                        int updateID = Integer.parseInt(prompt("Введите ID для обновления: "));
                         controller.checkIDPresence(updateID);
                         controller.updateNote(updateID, newNote());
                         break;
